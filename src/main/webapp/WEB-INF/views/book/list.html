@@ -17,7 +17,7 @@
 <table border="1">
     <tr>
         <td>Name Book</td>
-        <!--        <td>Date of purchase</td>-->
+        <td>Date of purchase</td>
         <td>Author</td>
         <td>Price</td>
         <td>Edit</td>
@@ -26,11 +26,11 @@
     <th:block th:each="book : ${books}">
         <tr>
             <td th:text="*{book.name}"></td>
-            <!--            <td th:text="*{book.dateOfPurchase}"></td>-->
+            <td th:text="*{book.dateOfPurchase}"></td>
             <td th:text="*{book.author}"></td>
             <td th:text="*{book.price}"></td>
             <td><a th:href="@{/edit-book/__${book.id}__}">Edit</a></td>
-            <td><a th:href="@{/delete-book/__${book.id}__}" onclick="confirm('Are you sure?')">Delete</a></td>
+            <td><a th:href="@{/delete-book/__${book.id}__}" onclick="return confirm('Are you sure?')">Delete</a></td>
         </tr>
     </th:block>
 </table>

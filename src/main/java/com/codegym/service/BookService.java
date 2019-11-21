@@ -16,5 +16,5 @@ public interface BookService {
 
     Iterable<Book> findAllByCategoryContaining(Category category);
 
-    Page<Book> findAllByPriceContaining(Double price, Pageable pageable);
+    Page<Book> findAllByPrice(Double price, Pageable pageable);
 }

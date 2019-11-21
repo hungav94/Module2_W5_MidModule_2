@@ -13,15 +13,16 @@
     <p th:text="${message}"></p>
 </th:block>
 <form th:action="@{/edit-book}" th:object="${book}" method="post">
+    <input type="hidden" th:field="*{id}">
     <table>
         <tr>
             <td>Name Book</td>
             <td><input type="text" th:field="*{name}"></td>
         </tr>
-<!--        <tr>-->
-<!--            <td>Date of purchase</td>-->
-<!--            <td><input type="text" th:field="*{dateOfPurchase}"></td>-->
-<!--        </tr>-->
+        <tr>
+            <td>Date of purchase</td>
+            <td><input type="date" th:field="*{dateOfPurchase}"></td>
+        </tr>
         <tr>
             <td>Author</td>
             <td><input type="text" th:field="*{author}"></td>

@@ -1,6 +1,7 @@
 package com.codegym.model;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -11,7 +12,7 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private LocalDate dateOfPurchase;
+    private Date dateOfPurchase;
     private String author;
     private Double price;
 
@@ -22,7 +23,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(Long id, String name, LocalDate dateOfPurchase, String author, Double price) {
+    public Book(Long id, String name, Date dateOfPurchase, String author, Double price) {
         this.id = id;
         this.name = name;
         this.dateOfPurchase = dateOfPurchase;
@@ -46,11 +47,11 @@ public class Book {
         this.name = name;
     }
 
-    public LocalDate getDateOfPurchase() {
+    public Date getDateOfPurchase() {
         return dateOfPurchase;
     }
 
-    public void setDateOfPurchase(LocalDate dateOfPurchase) {
+    public void setDateOfPurchase(Date dateOfPurchase) {
         this.dateOfPurchase = dateOfPurchase;
     }
 

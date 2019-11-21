@@ -24,7 +24,7 @@ public class BookController {
         Page<Book> books;
         if (s.isPresent()) {
             Double d = Double.parseDouble(s.get());
-            books = bookService.findAllByPriceContaining(d, pageable);
+            books = bookService.findAllByPrice(d, pageable);
         } else {
             books = bookService.findAll(pageable);
         }
@@ -74,7 +74,7 @@ public class BookController {
     @GetMapping("/delete-book/{id}")
     public ModelAndView deleteBook(@PathVariable Long id) {
         bookService.remove(id);
-        ModelAndView modelAndView = new ModelAndView("redirect:book");
+        ModelAndView modelAndView = new ModelAndView("redirect:/book");
         return modelAndView;
     }
 }

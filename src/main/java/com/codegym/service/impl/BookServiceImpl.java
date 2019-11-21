@@ -39,7 +39,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Page<Book> findAllByPriceContaining(Double price, Pageable pageable) {
-        return bookRepository.findAllByPriceContaining(price, pageable);
+    public Page<Book> findAllByPrice(Double price, Pageable pageable) {
+        return bookRepository.findAllByPrice(price, pageable);
     }
 }

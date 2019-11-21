@@ -1257,7 +1257,6 @@
     <column id="316" parent="297" name="price">
       <Position>5</Position>
       <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="317" parent="297" name="categoryId">
