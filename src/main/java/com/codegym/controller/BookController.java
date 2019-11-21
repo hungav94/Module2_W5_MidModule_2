@@ -1,7 +1,9 @@
 package com.codegym.controller;
 
 import com.codegym.model.Book;
+import com.codegym.model.Category;
 import com.codegym.service.BookService;
+import com.codegym.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +20,14 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private CategoryService categoryService;
+
+    @ModelAttribute("categories")
+    public Iterable<Category> categories(){
+        return categoryService.findAll();
+    }
 
     @GetMapping("/book")
     public ModelAndView showListBook(@RequestParam("s") Optional<String> s, @PageableDefault(size = 2) Pageable pageable) {
@@ -62,7 +72,7 @@ public class BookController {
         return modelAndView;
     }
 
-    @PostMapping("edit-book")
+    @PostMapping("/edit-book")
     public ModelAndView updateBook(@ModelAttribute Book book) {
         bookService.save(book);
         ModelAndView modelAndView = new ModelAndView("book/edit");
@@ -75,6 +85,38 @@ public class BookController {
     public ModelAndView deleteBook(@PathVariable Long id) {
         bookService.remove(id);
         ModelAndView modelAndView = new ModelAndView("redirect:/book");
+        return modelAndView;
+    }
+
+    @GetMapping("/sort-by-price-asc")
+    public ModelAndView getBookByPriceAsc(@PageableDefault(size = 2) Pageable pageable){
+        Page<Book> books = bookService.findAllByOrderByPriceAsc(pageable);
+        ModelAndView modelAndView = new ModelAndView("book/list");
+        modelAndView.addObject("books", books);
+        return modelAndView;
+    }
+
+    @GetMapping("/sort-by-price-desc")
+    public ModelAndView getBookByPriceDesc(@PageableDefault(size = 2) Pageable pageable){
+        Page<Book> books = bookService.findAllByOrderByPriceDesc(pageable);
+        ModelAndView modelAndView = new ModelAndView("book/list");
+        modelAndView.addObject("books",books);
+        return modelAndView;
+    }
+
+    @GetMapping("/sort-by-date-asc")
+    public ModelAndView getBookByDateAsc(@PageableDefault(size = 2) Pageable pageable){
+        Page<Book> books = bookService.findAllByOrderByDateOfPurchaseAsc(pageable);
+        ModelAndView modelAndView = new ModelAndView("book/list");
+        modelAndView.addObject("books", books);
+        return modelAndView;
+    }
+
+    @GetMapping("/sort-by-date-desc")
+    public ModelAndView getBookByDateDesc(@PageableDefault(size = 2) Pageable pageable){
+        Page<Book> books = bookService.findAllByOrderByDateOfPurchaseDesc(pageable);
+        ModelAndView modelAndView = new ModelAndView("book/list");
+        modelAndView.addObject("books", books);
         return modelAndView;
     }
 }

@@ -14,7 +14,15 @@ public interface BookService {
 
     void remove(Long id);
 
-    Iterable<Book> findAllByCategoryContaining(Category category);
+    Iterable<Book> findAllByCategory(Category category);
 
     Page<Book> findAllByPrice(Double price, Pageable pageable);
+
+    Page<Book> findAllByOrderByPriceDesc(Pageable pageable);
+
+    Page<Book> findAllByOrderByPriceAsc(Pageable pageable);
+
+    Page<Book> findAllByOrderByDateOfPurchaseAsc(Pageable pageable);
+
+    Page<Book> findAllByOrderByDateOfPurchaseDesc(Pageable pageable);
 }

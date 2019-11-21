@@ -36,7 +36,7 @@
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </schema>
     <schema id="11" parent="1" name="midmodule2">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+      <Collation>utf8_unicode_ci</Collation>
     </schema>
     <schema id="12" parent="1" name="module2_ss9_xanh_phantichthietkecsdl">
       <Collation>utf8mb4_0900_ai_ci</Collation>
@@ -1167,15 +1167,19 @@
     </table>
     <table id="297" parent="11" name="book">
       <Engine>MyISAM</Engine>
+      <Collation>utf8mb4_0900_ai_ci</Collation>
     </table>
     <table id="298" parent="11" name="category">
       <Engine>MyISAM</Engine>
+      <Collation>utf8mb4_0900_ai_ci</Collation>
     </table>
     <table id="299" parent="11" name="category_book">
       <Engine>MyISAM</Engine>
+      <Collation>utf8mb4_0900_ai_ci</Collation>
     </table>
     <table id="300" parent="11" name="hibernate_sequence">
       <Engine>MyISAM</Engine>
+      <Collation>utf8mb4_0900_ai_ci</Collation>
     </table>
     <column id="301" parent="294" name="id">
       <Position>1</Position>

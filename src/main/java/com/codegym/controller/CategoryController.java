@@ -1,6 +1,8 @@
 package com.codegym.controller;
 
+import com.codegym.model.Book;
 import com.codegym.model.Category;
+import com.codegym.service.BookService;
 import com.codegym.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private BookService bookService;
 
     @GetMapping("/category")
     public ModelAndView showListCategory() {
@@ -65,6 +70,20 @@ public class CategoryController {
     public ModelAndView deleteCategory(@PathVariable Long id){
         categoryService.remove(id);
         ModelAndView modelAndView = new ModelAndView("redirect:/category");
+        return modelAndView;
+    }
+
+    @GetMapping("/view-category/{id}")
+    public ModelAndView viewCategory(@PathVariable Long id){
+        Category category = categoryService.findById(id);
+        if (category == null){
+            return new ModelAndView("error-404");
+        }
+
+        Iterable<Book> books = bookService.findAllByCategory(category);
+        ModelAndView modelAndView = new ModelAndView("category/view");
+        modelAndView.addObject("category", category);
+        modelAndView.addObject("books", books);
         return modelAndView;
     }
 }

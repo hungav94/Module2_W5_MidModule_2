@@ -18,7 +18,7 @@
     </tr>
     <th:block th:each="categories: ${category}">
         <tr>
-            <td th:text="*{categories.name}"></td>
+            <td><a th:href="@{/view-category/__${categories.id}__}" th:text="*{categories.name}"></a></td>
             <td th:text="*{categories.description}"></td>
             <td><a th:href="@{/edit-category/__${categories.getId()}__}">Edit</a></td>
             <td><a th:href="@{/delete-category/__${categories.getId()}__}" onclick="return confirm('Are you sure?')">Delete</a></td>

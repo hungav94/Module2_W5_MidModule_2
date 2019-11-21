@@ -32,6 +32,14 @@
             <td><input type="text" th:field="*{price}"></td>
         </tr>
         <tr>
+            <td>Category</td>
+            <td>
+                <select th:field="*{category}">
+                    <option th:each="category:${categories}" th:value="*{category.id}" th:text="*{category.name}"/>
+                </select>
+            </td>
+        </tr>
+        <tr>
             <td></td>
             <td><input type="submit" value="Edit book"></td>
         </tr>

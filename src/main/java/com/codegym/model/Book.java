@@ -1,8 +1,9 @@
 package com.codegym.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.sql.Date;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "book")
@@ -16,7 +17,8 @@ public class Book {
     private String author;
     private Double price;
 
-    @ManyToOne
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoryId")
     private Category category;
 

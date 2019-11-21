@@ -7,7 +7,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface BookRepository extends PagingAndSortingRepository<Book, Long> {
-    Iterable<Book> findAllByCategoryContaining(Category category);
+    Iterable<Book> findAllByCategory(Category category);
 
     Page<Book> findAllByPrice(Double price, Pageable pageable);
+
+    Page<Book> findAllByOrderByPriceDesc(Pageable pageable);
+
+    Page<Book> findAllByOrderByPriceAsc(Pageable pageable);
+
+    Page<Book> findAllByOrderByDateOfPurchaseAsc(Pageable pageable);
+
+    Page<Book> findAllByOrderByDateOfPurchaseDesc(Pageable pageable);
 }
