@@ -16,6 +16,7 @@ public class Book {
     private Date dateOfPurchase;
     private String author;
     private Double price;
+    private String image;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
@@ -25,12 +26,12 @@ public class Book {
     public Book() {
     }
 
-    public Book(Long id, String name, Date dateOfPurchase, String author, Double price) {
-        this.id = id;
+    public Book(String name, Date dateOfPurchase, String author, Double price, String image) {
         this.name = name;
         this.dateOfPurchase = dateOfPurchase;
         this.author = author;
         this.price = price;
+        this.image = image;
     }
 
     public Long getId() {
@@ -71,6 +72,14 @@ public class Book {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Category getCategory() {

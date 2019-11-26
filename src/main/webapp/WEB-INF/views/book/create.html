@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Create book</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
 </th:block>
-<form th:action="@{/create-book}" th:object="${book}" method="post" accept-charset="UTF-8">
+<form th:action="@{/create-book}" th:object="${bookForm}" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td>Name Book</td>
@@ -30,6 +30,10 @@
         <tr>
             <td>Price</td>
             <td><input type="text" th:field="*{price}"></td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td><input type="file" th:field="*{image}" multiple></td>
         </tr>
         <tr>
             <td>Category</td>
